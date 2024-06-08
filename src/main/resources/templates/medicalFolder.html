@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dossier Medical</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/styles/medicalFolder.css}">
+   
+</head>
+<body>
+
+
+    <div class="bottomBar">
+        <a th:href="@{/profile}">
+            <img th:src="@{/images/profile.png}"  style="width: 100px; height: 100px;">
+        </a>
+        <a th:href="@{/patients}">
+            <img th:src="@{/images/patients.png}"  style="width: 100px; height: 100px;">
+        </a>
+        <a th:href="@{/caisse}">
+            <img th:src="@{/images/bill.png}"  style="width: 100px; height: 100px;">
+  
+        </a>
+        <a th:href="@{/}" class="logout">
+  
+            <img th:src="@{/images/logout.png}"  style="width: 100px; height: 100px;">
+  
+        </a>
+    </div>
+
+
+        <div class="main">
+
+            <div class="dentist-info" >
+
+                <img th:src="@{/images/dentist.png}" alt="an image of the doctor"  style="width: 100px; height: 100px;margin: 20px; "/>
+                <span th:text="${user.getNom()}"></span>
+                <span th:text="${user.getPrenom()}" ></span>
+            </div>
+
+
+            <div class="links" >
+                <a th:href="@{/consultation/{id}(id=${id})}" class="large-link" style="display: flex; flex-direction: row;">
+                    <h1>patient consultation</h1>
+                    <img th:src="@{/images/click.png}" alt="an image of the doctor"  style="width: 50px; height: 50px;margin: 20px; "/>
+                </a>
+                
+                <a th:href="@{/situationFinanciere/{id}(id=${id})}" class="large-link"  style="display: flex; flex-direction: row;">
+                    <h1>patient financial situation</h1>
+                    <img th:src="@{/images/click.png}" alt="an image of the doctor"  style="width: 50px; height: 50px;margin: 20px; "/>
+                </a>
+            </div>
+        </div>
+        </body>
+</html>

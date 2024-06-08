@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modifier Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/editProfile.css">
+
+    
+</head>
+<body>
+   
+    <div class="bottomBar">
+        <a th:href="@{/profile}">
+            <img th:src="@{/images/profile.png}"  style="width: 100px; height: 100px;">
+        </a>
+        <a th:href="@{/patients}">
+            <img th:src="@{/images/patients.png}"  style="width: 100px; height: 100px;">
+        </a>
+        <a th:href="@{/caisse}">
+            <img th:src="@{/images/bill.png}"  style="width: 100px; height: 100px;">
+  
+        </a>
+        <a th:href="@{/}" class="logout">
+  
+            <img th:src="@{/images/logout.png}"  style="width: 100px; height: 100px;">
+  
+        </a>
+    </div>
+    <div class="main">
+
+        <div class="profile-header" style="background-color: rgb(0, 0, 0); border-radius: 30px; padding: 10px;  color: aquamarine;">
+            <div style="padding-left: 850px; font-size: larger; font-weight: bolder;">
+                <span th:text="${user.getNom()}  + ' ' + ${user.getPrenom()}" style="font-size: large; font-weight: bold;"></span>
+            </div>
+            <div>
+            </div>
+        </div>
+
+        <form th:action="@{/enregisterProfile}" th:object="${user}" method="post">
+            <div class="profile-info" style="background-color: #515151; padding: 20px; border-radius: 5px;">
+                <p>
+                    <img src="./images/location.png" alt="Address icon" style="width: 50px; height: 50px; margin-left: 45%; margin-bottom: 10px;">
+                    <input type="text" th:field="*{adresse}" class="form-control"></p>
+                    <p>
+                        
+                        <img src="./images/email.png" alt="Address icon" style="width: 50px; height: 50px; margin-left: 45%; margin-bottom: 10px;">
+                        
+                        <input type="text" th:field="*{email}" class="form-control"></p>
+                        <p>
+                            <img src="./images/password.png" alt="Address icon" style="width: 50px; height: 50px; margin-left: 45%; margin-bottom: 10px;">
+                            <input type="password" th:field="*{MotDePass}" class="form-control" ></p>
+                            <p>
+                                <img src="./images/idCard.png" alt="Address icon" style="width: 50px; height: 50px; margin-left: 45%; margin-bottom: 10px;">
+                                <input type="text" th:field="*{cin}" class="form-control"></p>
+                                <p>
+                                    
+                                    <img src="./images/telephone.png" alt="Address icon" style="width: 50px; height: 50px; margin-left: 45%; margin-bottom: 10px;">
+                                    
+                                    <input type="text" th:field="*{telephone}" class="form-control"></p>
+                <p>
+
+                    <img src="./images/sexe.png" alt="Address icon" style="width: 50px; height: 50px; margin-left: 45%; margin-bottom: 10px;">
+                    <select th:field="*{sexe}" class="form-control">
+                        <option th:value="Homme" th:text="Homme"></option>
+                        <option th:value="Femme" th:text="Femme"></option>
+                    </select>
+                </p>
+            </div>
+
+            <div class="profile-header">
+                <div style="text-align: center;"> <!-- Center align -->
+                    <button type="submit" class="btn btn-info" style="width: 300px;  margin: 10px; height: 50px; margin-right: 150px;"><h2>save</h2></button> <!-- Set width to 200px -->
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

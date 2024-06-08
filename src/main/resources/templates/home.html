@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/styles/home.css}">
+</head>
+<body>
+    <div class="bottomBar">
+        <a th:href="@{/profile}">
+            <img th:src="@{/images/profile.png}"  style="width: 100px; height: 100px;">
+        </a>
+        <a th:href="@{/patients}">
+            <img th:src="@{/images/patients.png}"  style="width: 100px; height: 100px;">
+        </a>
+        <a th:href="@{/caisse}">
+            <img th:src="@{/images/bill.png}"  style="width: 100px; height: 100px;">
+
+        </a>
+        <a th:href="@{/}" class="logout">
+
+            <img th:src="@{/images/logout.png}"  style="width: 100px; height: 100px;">
+
+        </a>
+    </div>
+
+    <div class="content">
+
+        <div class="user-info" style=" 
+        padding: 10px;
+        ">
+            <img th:src="@{/images/dentist.png}" class="img-fluid rounded-circle" alt="User Image" style="margin-top: 10px;" />
+            <h1><span th:text="${user.getNom()} + ' ' + ${user.getPrenom()}"></span></h1>
+            <h1><span th:text="${user.getEmail()}"></span></h1>
+        </div>
+        <hr>
+
+
+        <div class="patients">
+            <img th:src="@{/images/patients.png}" class="img-fluid rounded-circle" alt="User Image" style="margin-top: 10px;margin-left: 45%; width: 100px; height: 100px;"  />
+
+            <div class="patient-list" >
+              <div th:each="patient : ${patients}" class="patient-item" style=" color: rgb(22, 211, 207); background-color: black;
+              /* margin: 50px; */
+              /* padding: 50px; */
+              padding: 20px;
+              border-radius: 20px;
+              ">
+                <div class="" >
+                    <img th:src="@{/images/user.png}" style="width: 50px; height: 50px; margin-left: 10px; margin-right: 100px;"  class="patient-avatar" alt="Patient Image" />
+                    <span th:text="${patient.getNom()}" style="margin-right: 200px;
+                    width: 200px;
+                    "></span>
+
+                </div>
+                  <img th:src="@{/images/id.png}" style="width: 50px; height: 50px; margin-top:10px ; margin-right: 120px;"   class="patient-avatar" alt="Patient Image" />
+                  <span th:text="${patient.getId()}"></span>
+
+              </div>
+          </div>
+            
+          <img th:src="@{/images/calendar.png}" class="img-fluid rounded-circle" alt="User Image" style="margin-top: 10px;margin-left: 45%; width: 100px; height: 100px; margin-bottom: 10px;"  />
+            <table class="table table-dark" style="border-radius: 10px; color: aquamarine;">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>BD</th>
+                        <th>Gender</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="patient : ${todayPatients}">
+                        <td th:text="${patient.getNom()}"></td>
+                        <td th:text="${patient.getDateNaissance()}"></td>
+                        <td th:text="${patient.getSexe()}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+    <script th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js}"></script>
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
+</body>
+</html>

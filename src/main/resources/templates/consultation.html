@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>consultations</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/styles/consultation.css}">
+   
+</head>
+<body>
+
+
+    <div class="bottomBar">
+        <a th:href="@{/profile}">
+            <img th:src="@{/images/profile.png}"  style="width: 100px; height: 100px;">
+        </a>
+        <a th:href="@{/patients}">
+            <img th:src="@{/images/patients.png}"  style="width: 100px; height: 100px;">
+        </a>
+        <a th:href="@{/caisse}">
+            <img th:src="@{/images/bill.png}"  style="width: 100px; height: 100px;">
+  
+        </a>
+        <a th:href="@{/}" class="logout">
+  
+            <img th:src="@{/images/logout.png}"  style="width: 100px; height: 100px;">
+  
+        </a>
+    </div>
+
+
+    <div class="content">
+
+        <div class="table-responsive">
+            
+            <img th:src="@{/images/consultations.png}" alt="an image of the doctor"  style="width: 150px; height: 150px;margin: 20px; margin-left: 400px; "/>
+
+            <table class="table table-dark" style="border-radius: 20px;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Id</th>
+                        <th>Date of creation</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr th:each="consultation : ${consultations}">
+                        <td> <img th:src="@{/images/waiting.png}" alt="Delete" style="width: 30px; height: 30px; margin-top: 0px;" />
+
+                        </td>
+                        <td th:text="${consultation.idConsultation}"></td>
+                        <td th:text="${consultation.dateConsultation}"></td>
+                        <td>
+                            <a th:href="@{/deleteConsultation/{idc}/{id}(idc=${consultation.idConsultation}, id=${patient.id})}">
+                                <img th:src="@{/images/delete.png}" alt="Delete" style="width: 50px; height: 50px;" />
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="form-container">
+
+            <img th:src="@{/images/form.png}" alt="an image of the doctor"  style="width: 150px; height: 150px;margin: 20px; margin-left: 400px; "/>
+
+            <form th:action="@{/addConsultation/{id}(id=${patient.id})}" method="post" style="background-color:black; color:aquamarine; border-radius: 20px;">
+                <div class="form-group">
+                    <label for="nbDents">
+                        <img th:src="@{/images/teeth.png}" alt="an image of the doctor"  style="width: 50px; height: 50px; margin-left: 400px; "/>
+
+                    </label>
+                    <input type="number" class="form-control" id="nbDents" name="nbDents">
+                </div>
+                <div class="form-group">
+                    <label for="prixBase">
+                        <img th:src="@{/images/money.png}" alt="an image of the doctor"  style="width: 50px; height: 50px; margin-left: 400px; "/>    
+                    </label>
+                    <input type="text" class="form-control" id="prixBase" name="prixBase" >
+                </div>
+                <div class="form-group">
+                    <label for="date">
+                        
+                        <img th:src="@{/images/calendar1.png}" alt="an image of the doctor"  style="width: 50px; height: 50px; margin-left: 400px; "/>
+                    </label>
+                    <input type="date" class="form-control" id="date" name="date">
+                </div>
+                <div class="form-group">
+                    <label for="prixPatient">
+                        <img th:src="@{/images/payment.png}" alt="an image of the doctor"  style="width: 50px; height: 50px; margin-left: 400px; "/>
+
+                    </label>
+                    <input type="text" class="form-control" id="prixPatient" name="prixPatient">
+                </div>
+                <div class="form-group">
+                    <label for="acte">
+                        <img th:src="@{/images/act.png}" alt="an image of the doctor"  style="width: 50px; height: 50px; margin-left: 400px; "/>
+                    </label>
+                    <select class="form-control " id="acte" name="acte">
+                        <option>SOINS_DES_CARIES</option>
+                        <option>CHIRURGIE</option>
+                        <option>ORTHODONTIE</option>
+                        <option>PREVENTION</option>
+                        <option>IMPLANTOLOGIE</option>
+                        <option>SOINS_DES_TISSUS_MOUS</option>
+                        <option>PROTHESES_DENTAIRES</option>
+                        <option>DIAGNOSTIC</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-info" style="display: flex; justify-content: center; margin-left: 40%; width: 200px;">ADD </button>
+            </form>
+        </div>
+    </div>
+    <!-- Add more content as needed -->
+</body>
+</html>

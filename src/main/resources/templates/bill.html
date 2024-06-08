@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patients</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/caisse.css">
+    
+</head>
+<body>
+  
+
+
+    <div class="bottomBar">
+        <a th:href="@{/profile}">
+            <img th:src="@{/images/profile.png}"  style="width: 100px; height: 100px;">
+        </a>
+        <a th:href="@{/patients}">
+            <img th:src="@{/images/patients.png}"  style="width: 100px; height: 100px;">
+        </a>
+        <a th:href="@{/caisse}">
+            <img th:src="@{/images/bill.png}"  style="width: 100px; height: 100px;">
+  
+        </a>
+        <a th:href="@{/}" class="logout">
+  
+            <img th:src="@{/images/logout.png}"  style="width: 100px; height: 100px;">
+  
+        </a>
+    </div>
+
+    <div class="content">
+
+        
+            <img th:src="@{/images/bill.png}" alt="an image of the doctor"  style="width: 150px; height: 150px;margin: 20px; margin-left: 40%; "/>
+
+        <div class="table-responsive">
+            <table class="table table-dark" style="color: aquamarine; border-radius: 20px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>time</th>
+                        <th>patient full name </th>
+                        <th>consultation number</th>
+                        <th>amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="facture : ${factures}">
+                        <td th:text="${facture.idFacture}">ID</td>
+                        <td th:text="${facture.dateFacturation}">Date</td>
+                        <td th:text="${facture.getConsultation().getDossierMedical().getPatient().getNom()} + '   '  + ${facture.getConsultation().getDossierMedical().getPatient().getPrenom()}"></td>
+                        <td th:text="${facture.getConsultation().getIdConsultation()}">N° Consultation</td>
+                        <td th:text="${facture.montantTotal}">Montant</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

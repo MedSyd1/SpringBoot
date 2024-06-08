@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patients</title>
+    <!-- Bootstrap CSS -->
+    <link
+    th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}"
+    rel="stylesheet"
+    />
+    <link th:href="@{/styles/addPatient.css}" rel="stylesheet">
+    
+</head>
+<body>
+
+
+    <div class="bottomBar">
+        <a th:href="@{/profile}">
+            <img th:src="@{/images/profile.png}"  style="width: 100px; height: 100px;">
+        </a>
+        <a th:href="@{/patients}">
+            <img th:src="@{/images/patients.png}"  style="width: 100px; height: 100px;">
+        </a>
+        <a th:href="@{/caisse}">
+            <img th:src="@{/images/bill.png}"  style="width: 100px; height: 100px;">
+  
+        </a>
+        <a th:href="@{/}" class="logout">
+  
+            <img th:src="@{/images/logout.png}"  style="width: 100px; height: 100px;">
+  
+        </a>
+    </div>
+
+    <div class="main">
+
+        <form th:action="@{/patients}"  method="post">
+          <div class="form-group">
+              <label for="nom"><h2>first name</h2></label>
+
+              <input type="text" class="form-control" id="nom" name="nom" >
+          </div>
+          <div class="form-group">
+              <label for="prenom"><h2>last name</h2></label>
+              <input type="text" class="form-control" id="prenom" name="prenom" >
+            </div>
+            <div class="form-group">
+                <label for="profession"><h2>profession</h2></label>
+                <input type="text" class="form-control" id="profession" name="profession" >
+            </div>
+            <div class="form-group">
+                <label for="mutuelle"><h2>Assurance</h2></label>
+                <select class="form-control" id="mutuelle" name="mutuelle">
+                    <option>CNAM</option>
+                    <option>CIMR</option>
+                    <option>CNOPS</option>
+                    <option>CNSS</option>
+                </select>
+            </div>
+          <div class="form-group">
+              <label for="dateNaissance"><h2>BD</h2></label>
+              <input type="date" class="form-control" id="dateNaissance" name="dateNaissance">
+          </div>
+          <div class="form-group">
+            <label for="sexe"><h2>Gender</h2></label>
+            <input type="text" class="form-control" id="sexe" name="sexe">
+        </div>
+          <div class="form-group">
+              <label for="groupeSanguin"><h2>blood group</h2></label>
+              <select class="form-control" id="groupeSanguin" name="groupeSanguin">
+                  <option>B_NEGATIF</option>
+                  <option>AB_POSITIF</option>
+                  <option>B_POSITIF</option>
+                  <option>O_NEGATIF</option>
+                  <option>AB_NEGATIF</option>
+                  <option>A_POSITIF</option>
+                  <option>A_NEGATIF</option>
+                  <option>O_POSITIF</option>
+
+              </select>
+          </div>
+
+         
+          <button type="submit" class="btn btn-info" 
+
+          style="display: flex; align-items: center; justify-content: center;
+          margin-left: 40%; width: 200px;
+          "
+          ><h2>save</h2></button>
+      </form>
+        
+
+   
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js}"></script>
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
+</body>
+</html>

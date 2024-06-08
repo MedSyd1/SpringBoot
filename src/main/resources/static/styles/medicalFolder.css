@@ -1,0 +1,63 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    margin: 0;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.bottomBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    color: white;
+    position: fixed;
+    bottom: 0; 
+    left: 0; 
+}
+
+.bottomBar a {
+    flex: 1;
+    display: block;
+    text-align: center; 
+    padding: 15px;
+    text-decoration: none;
+    color: white; 
+    
+}
+
+.bottomBar a:last-child {
+    border-right: none; 
+}
+
+
+
+.main{
+    width: 700px;
+    height: 700px;
+    background-color: gray;
+    margin: 50px;
+    padding: 50px;
+    border-radius: 20px;
+}
+
+
+.dentist-info{
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
+.links{
+    margin-top: 20px;
+}
+
+.links a{
+    text-decoration: none;
+    color: white;
+}
+.links a:hover{
+    color: aquamarine;
+}
